@@ -4,14 +4,14 @@ if [ -d /bundle ]; then
   cd /bundle
   tar xzf *.tar.gz
   cd /bundle/bundle/programs/server/
-  npm i
+  npm install --unsafe-perm
   cd /bundle/bundle/
 elif [[ $BUNDLE_URL ]]; then
   cd /tmp
   curl -L -o bundle.tar.gz $BUNDLE_URL
   tar xzf bundle.tar.gz
   cd /tmp/bundle/programs/server/
-  npm i
+  npm install --unsafe-perm
   cd /tmp/bundle/
 elif [ -d /built_app ]; then
   cd /built_app
