@@ -21,6 +21,12 @@ else
 fi
 
 if [[ $REBUILD_NPM_MODULES ]]; then
+  echo "=> abernix/meteord:bin-build is NOT TESTED AT ALL (and maybe not necessary???)"
+  echo "     Since Meteor handles rebuilding binary dependencies itself now, it's not entirely"
+  echo "     clear to me if this particular image is still necessary.  If you are receiving"
+  echo "     this message, I highly recommend trying the :base image without the REBUILD_NPM_MODULES"
+  echo "     environment variable and see if it works for you.  Please report back as I'd like to"
+  echo "     discourage use of the :bin-build image if possible!  Thanks! -abernix"
   if [ -f /opt/meteord/rebuild_npm_modules.sh ]; then
     cd programs/server
     bash /opt/meteord/rebuild_npm_modules.sh
