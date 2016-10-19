@@ -13,7 +13,13 @@ echo "=> Executing NPM install --production"
 meteor npm install --production
 
 echo "=> Executing Meteor Build..."
-meteor build --directory $BUNDLE_DIR --server=http://localhost:3000
+export
+METEOR_WAREHOUSE_URLBASE=https://d3fm2vapipm3k9.cloudfront.net \
+  METEOR_LOG=debug \
+  meteor build \
+  --unsafe-perm \
+  --directory $BUNDLE_DIR \
+  --server=http://localhost:3000
 
 echo "=> Printing Meteor Node information..."
 echo "  => platform"
