@@ -1,5 +1,7 @@
 #!/bin/bash
 
+: ${NODE_VERSION?"NODE_VERSION has not been set."}
+
 set -x
 
 function clean() {
@@ -13,7 +15,7 @@ clean
 
 meteor create hello
 cd hello
-echo FROM abernix/meteord:onbuild >> Dockerfile
+echo "FROM abernix/meteord:onbuild-node-${NODE_VERSION}" > Dockerfile
 
 docker build -t meteor-app-image ./
 docker run -d \

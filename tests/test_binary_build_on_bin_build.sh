@@ -1,5 +1,7 @@
 #!/bin/bash
 
+: ${NODE_VERSION?"NODE_VERSION has not been set."}
+
 set -x
 
 function clean() {
@@ -15,7 +17,7 @@ docker run -d \
     -e BUNDLE_URL=https://abernix-meteord-tests.s3-us-west-2.amazonaws.com/meteord-test-bundle.tar.gz \
     -e REBUILD_NPM_MODULES=1 \
     -p 9090:80 \
-    abernix/meteord:binbuild
+    "abernix/meteord:binbuild-node-${NODE_VERSION}"
 
 echo "Waiting for binary building is happening"
 sleep 80

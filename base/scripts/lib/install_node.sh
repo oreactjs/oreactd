@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
-NODE_VERSION=4.6.1
+if [ -z "$NODE_VERSION" ]; then
+  echo "Must set NODE_VERSION with --build-arg NODE_VERSION=x.y.z when building docker image"
+  exit 1
+fi
+echo "Installing Node v${NODE_VERSION}"
 NODE_ARCH=x64
 
 # check we need to do this or not

@@ -1,5 +1,8 @@
 FROM abernix/meteord:base
 MAINTAINER MeteorHacks Pvt Ltd.
 
+ARG NODE_VERSION
+ENV NODE_VERSION ${NODE_VERSION:-4.6.1}
+
 ONBUILD COPY ./ /app
 ONBUILD RUN bash $METEORD_DIR/on_build.sh
