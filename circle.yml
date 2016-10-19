@@ -1,8 +1,6 @@
 machine:
   node:
-    version: 4.6.0
-  pre:
-    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    version: 4.6.1
   services:
     - docker
 
