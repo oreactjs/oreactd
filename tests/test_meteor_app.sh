@@ -20,7 +20,7 @@ docker run -d \
     -p 8080:80 \
     meteor-app-image
 
-sleep 5
+sleep 50
 
 appContent=`curl http://localhost:8080`
 clean

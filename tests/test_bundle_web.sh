@@ -14,7 +14,7 @@ docker run -d \
     -p 9090:80 \
     abernix/meteord:base
 
-sleep 40
+sleep 50
 
 appContent=`curl http://localhost:9090`
 clean
