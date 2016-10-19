@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-: ${NODE_VERSION:=4.6.1}
+: ${NODE_VERSION?"NODE_VERSION has not been set."}
 
 docker build --no-cache --build-arg "NODE_VERSION=${NODE_VERSION}" -t "abernix/meteord:base-node-${NODE_VERSION}" ../base && \
   docker tag "abernix/meteord:base-node-${NODE_VERSION}" abernix/meteord:base
