@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 function clean() {
   docker rm -f phantomjs_check
 }
@@ -8,7 +10,7 @@ clean
 docker run  \
     --name phantomjs_check \
     --entrypoint="/bin/bash" \
-    meteorhacks/meteord:base -c 'phantomjs -h'
+    abernix/meteord:base -c 'phantomjs -h'
 
 sleep 5
 

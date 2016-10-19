@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-NODE_VERSION=0.10.43
+NODE_VERSION=4.6.1
 NODE_ARCH=x64
 
 # check we need to do this or not
@@ -15,3 +15,5 @@ mv ${NODE_DIST} /opt/nodejs
 
 ln -sf /opt/nodejs/bin/node /usr/bin/node
 ln -sf /opt/nodejs/bin/npm /usr/bin/npm
+
+npm install --global npm@3

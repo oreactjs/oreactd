@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 function clean() {
   docker rm -f meteor-app
   docker rmi -f meteor-app-image
@@ -11,7 +13,7 @@ clean
 
 meteor create hello
 cd hello
-echo FROM meteorhacks/meteord:onbuild >> Dockerfile
+echo FROM abernix/meteord:onbuild >> Dockerfile
 
 docker build -t meteor-app-image ./
 docker run -d \
@@ -20,7 +22,7 @@ docker run -d \
     -p 8080:80 \
     meteor-app-image
 
-sleep 5
+sleep 50
 
 appContent=`curl http://localhost:8080`
 clean

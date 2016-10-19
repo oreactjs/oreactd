@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 function clean() {
   docker rm -f web
 }
@@ -10,11 +12,11 @@ clean
 docker run -d \
     --name web \
     -e ROOT_URL=http://web_app \
-    -e BUNDLE_URL=https://s3.amazonaws.com/zeema-data/aa.tar.gz \
+    -e BUNDLE_URL=https://abernix-meteord-tests.s3-us-west-2.amazonaws.com/meteord-test-bundle.tar.gz \
     -p 9090:80 \
-    meteorhacks/meteord:base
+    abernix/meteord:base
 
-sleep 8
+sleep 50
 
 appContent=`curl http://localhost:9090`
 clean

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 function clean() {
   docker rm -f no_app
 }
@@ -11,7 +13,7 @@ docker run -d \
     --name no_app \
     -e ROOT_URL=http://no_app \
     -p 9090:80 \
-    meteorhacks/meteord:base
+    abernix/meteord:base
 
 sleep 10
 
