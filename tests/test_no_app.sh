@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 function clean() {
   docker rm -f no_app
 }
