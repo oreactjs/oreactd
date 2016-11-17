@@ -1,4 +1,5 @@
 set -e
+set -x
 
 COPIED_APP_PATH=/copied-app
 BUNDLE_DIR=/tmp/bundle-dir
