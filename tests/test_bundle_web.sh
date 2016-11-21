@@ -16,7 +16,7 @@ docker run -d \
     -e ROOT_URL=http://web_app \
     -e BUNDLE_URL=https://abernix-meteord-tests.s3-us-west-2.amazonaws.com/meteord-test-bundle.tar.gz \
     -p 9090:80 \
-    "abernix/meteord:base-node-${NODE_VERSION}"
+    "abernix/meteord:node-${NODE_VERSION}-base"
 
 sleep 50
 
