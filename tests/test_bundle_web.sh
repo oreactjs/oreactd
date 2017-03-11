@@ -18,7 +18,7 @@ docker run -d \
     -p 9090:80 \
     "abernix/meteord:node-${NODE_VERSION}-base"
 
-sleep 50
+sleep 120
 
 appContent=`curl http://localhost:9090`
 clean
