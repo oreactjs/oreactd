@@ -5,6 +5,10 @@ machine:
     - docker
 
 dependencies:
+  pre:
+    - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+    - sudo apt-get update
+    - sudo apt-get install -y libstdc++-4.9-dev
   override:
     - if [ ! -f $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
     - sudo ln -s $HOME/.meteor/meteor /usr/bin/meteor
