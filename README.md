@@ -1,8 +1,49 @@
 [![Circle CI](https://circleci.com/gh/abernix/meteord/tree/master.svg?style=svg)](https://circleci.com/gh/abernix/meteord/tree/master)
 
-> ###Use [kadirahq/meteord](https://github.com/kadirahq/meteord) for meteor 1.4 and above. 
+# MeteorD - Docker image for MUP
 
-## MeteorD - Docker Runtime for Meteor Apps
+## Supported tags
+
+Please see the explanation of the [tag variations](#tag-variations) (e.g. `-builddeps`, `-onbuild`) below.
+
+### Node 8 (Meteor 1.6+)
+
+#### Node 8.9.0
+
+* `node-8-base`, `node-8.9.0-base`
+* `node-8-builddeps`, `node-8.9.0-builddeps`
+* `node-8-onbuild`, `node-8.9.0-onbuild`
+* `node-8-devbuild`, `node-8.9.0-devbuild`
+
+### Node 4 (Meteor 1.4, 1.5)
+
+#### Node 4.8.4
+
+* `node-4-base`, `node-4.8.4-base`
+* `node-4-builddeps`, `node-4.8.4-builddeps`
+* `node-4-onbuild`, `node-4.8.4-onbuild`
+* `node-4-devbuild`, `node-4.8.4-devbuild`
+
+#### Node 4.8.0
+
+* `node-4.8.0-base`
+* `node-4.8.0-builddeps`
+* `node-4.8.0-onbuild`
+* `node-4.8.0-devbuild`
+
+### Older Node versions
+
+For brevity, not all possibilities are listed above and there are many more available.  It's recommended that you use the latest version within the series which your Meteor was designed for (see titles above).  The most recent version will be tagged with a `node-x-*` tag accordingly.  For the full list, please see the ["Tags" tab](https://hub.docker.com/r/abernix/meteord/tags/) above.
+
+## Tag Variations
+
+There are three variations of each major Node-based release.
+
+* `-base`
+* `-builddeps`
+* `-onbuild`
+* `-devbuild`
+
 
 There are two main ways you can use Docker with Meteor apps. They are:
 
@@ -15,12 +56,12 @@ There are two main ways you can use Docker with Meteor apps. They are:
 
 With this method, your app will be converted into a Docker image. Then you can simply run that image.  
 
-For that, you can use `meteorhacks/meteord:onbuild` as your base image. Magically, that's only thing you have to do. Here's how to do it:
+For that, you can use `abernix/meteord:onbuild` as your base image. Magically, that's only thing you have to do. Here's how to do it:
 
 Add following `Dockerfile` into the root of your app:
 
 ~~~shell
-FROM meteorhacks/meteord:onbuild
+FROM abernix/meteord:onbuild
 ~~~
 
 Then you can build the docker image with:
@@ -43,9 +84,9 @@ Then you can access your app from the port 8080 of the host system.
 
 #### Stop downloading Meteor each and every time (mostly in development)
 
-So, with the above method, MeteorD will download and install Meteor each and every time. That's bad especially in development. So, we've a solution for that. Simply use `meteorhacks/meteord:devbuild` as your base image.
+So, with the above method, MeteorD will download and install Meteor each and every time. That's bad especially in development. So, we've a solution for that. Simply use `aberaber/meteord:devbuild` as your base image.
 
-> WARNING: Don't use `meteorhacks/meteord:devbuild` for your final build. If you used it, your image will carry the Meteor distribution as well. As a result of that, you'll end up with an image with ~700 MB.
+> WARNING: Don't use `abernix/meteord:devbuild` for your final build. If you used it, your image will carry the Meteor distribution as well. As a result of that, you'll end up with an image with ~700 MB.
 
 ### 2. Running a Meteor bundle with Docker
 
@@ -60,7 +101,7 @@ docker run -d \
     -e MONGO_OPLOG_URL=mongodb://oplog_url \
     -v /mybundle_dir:/bundle \
     -p 8080:80 \
-    meteorhacks/meteord:base
+    abernix/meteord:base
 ~~~
 
 With this method, MeteorD looks for the tarball version of the meteor bundle. So, you should build the meteor bundle for `os.linux.x86_64` and put it inside the `/bundle` volume. This is how you can build a meteor bundle.
@@ -80,7 +121,7 @@ docker run -d \
     -e MONGO_OPLOG_URL=mongodb://oplog_url \
     -e BUNDLE_URL=http://mybundle_url_at_s3.tar.gz \
     -p 8080:80 \
-    meteorhacks/meteord:base
+    abernix/meteord:base
 ~~~
 
 #### 2.2 With Docker Compose
@@ -104,7 +145,7 @@ mongo:
 
 When using Docker Compose to start a Meteor container with a Mongo container as well, we need to wait for the database to start up before we try to start the Meteor app, else the container will fail to start.
 
-This sample docker-compose.yml file starts up a container that has used meteorhacks/meterod as its base and a mongo container. It also passes along several variables to Meteor needed to start up, specifies the port number the container will listen on, and waits 30 seconds for the mongodb container to start up before starting up the Meteor container.
+This sample docker-compose.yml file starts up a container that has used abernix/meterod as its base and a mongo container. It also passes along several variables to Meteor needed to start up, specifies the port number the container will listen on, and waits 30 seconds for the mongodb container to start up before starting up the Meteor container.
 
 #### Rebuilding Binary Modules
 
@@ -118,7 +159,7 @@ docker run -d \
     -e BUNDLE_URL=http://mybundle_url_at_s3.tar.gz \
     -e REBUILD_NPM_MODULES=1 \
     -p 8080:80 \
-    meteorhacks/meteord:binbuild
+    abernix/meteord:binbuild
 ~~~
 
 ## Known Issues
