@@ -14,4 +14,4 @@ rm -rf /var/lib/cache /var/lib/log
 rm -rf /tmp/*
 
 # Clear npm cache
-npm cache verify
+npm cache clear --force
