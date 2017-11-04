@@ -4,14 +4,14 @@
 
 ## Supported tags
 
-Please see the explanation of the [tag variations](#tag-variations) (e.g. `-builddeps`, `-onbuild`) below.
+Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binbuild`, `-onbuild`) below.
 
 ### Node 8 (Meteor 1.6+)
 
 #### Node 8.9.0
 
 * `node-8-base`, `node-8.9.0-base`
-* `node-8-builddeps`, `node-8.9.0-builddeps`
+* `node-8-binbuild`, `node-8.9.0-binbuild`
 * `node-8-onbuild`, `node-8.9.0-onbuild`
 * `node-8-devbuild`, `node-8.9.0-devbuild`
 
@@ -20,14 +20,14 @@ Please see the explanation of the [tag variations](#tag-variations) (e.g. `-buil
 #### Node 4.8.4
 
 * `node-4-base`, `node-4.8.4-base`
-* `node-4-builddeps`, `node-4.8.4-builddeps`
+* `node-4-binbuild`, `node-4.8.4-binbuild`
 * `node-4-onbuild`, `node-4.8.4-onbuild`
 * `node-4-devbuild`, `node-4.8.4-devbuild`
 
 #### Node 4.8.0
 
 * `node-4.8.0-base`
-* `node-4.8.0-builddeps`
+* `node-4.8.0-binbuild`
 * `node-4.8.0-onbuild`
 * `node-4.8.0-devbuild`
 
@@ -40,7 +40,7 @@ For brevity, not all possibilities are listed above and there are many more avai
 There are three variations of each major Node-based release.
 
 * `-base`
-* `-builddeps`
+* `-binbuild`
 * `-onbuild`
 * `-devbuild`
 
