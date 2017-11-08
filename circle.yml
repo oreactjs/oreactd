@@ -43,7 +43,7 @@ deployment:
         echo "$IMAGES" | xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "${IMAGE_NAME_MAJOR}-%"
 
         # Push those major version tags.
-        echo "$IMAGES" | xargs -n1 -I% docker push "${IMAGE_NAME_VERSION}-%"
+        echo "$IMAGES" | xargs -n1 -I% docker push "${IMAGE_NAME_MAJOR}-%"
 
         # If this is the default track, tag them with the bare tags.
         if [ "$NODE_MAJOR" = "4" ]
