@@ -25,7 +25,12 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - |
         set -x
-        IMAGES="base onbuild devbuild binbuild"
+        IMAGES="
+          base
+          onbuild
+          devbuild
+          binbuild
+        "
         NODE_MAJOR="$(echo $NODE_VERSION | cut -d '.' -f1)"
         DOCKER_HUB_REPO="abernix/meteord"
         BASE_IMAGE_NAME="${DOCKER_HUB_REPO}:node-"
