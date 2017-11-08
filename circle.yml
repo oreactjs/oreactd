@@ -52,9 +52,9 @@ deployment:
         # If this is the default track, tag them with the bare tags.
         if [ "$NODE_MAJOR" = "4" ]
         then
-          echo "$IMAGES" | xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "%"
+          echo "$IMAGES" | xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "${DOCKER_HUB_REPO}:%"
 
-          echo "$IMAGES" | xargs -n1 -I% docker push "%"
+          echo "$IMAGES" | xargs -n1 -I% docker push "${DOCKER_HUB_REPO}:%"
 
           # Also tag base as 'latest'
           docker tag "${DOCKER_HUB_REPO}:base" "${DOCKER_HUB_REPO}:latest"
