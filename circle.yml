@@ -27,7 +27,8 @@ deployment:
         set -x
         IMAGES="base onbuild devbuild binbuild"
         NODE_MAJOR="$(echo $NODE_VERSION | cut -d '.' -f1)"
-        BASE_IMAGE_NAME="abernix/meteord:node-"
+        DOCKER_HUB_REPO="abernix/meteord"
+        BASE_IMAGE_NAME="${DOCKER_HUB_REPO}:node-"
         IMAGE_NAME_VERSION="${BASE_IMAGE_NAME}${NODE_VERSION}"
         IMAGE_NAME_MAJOR="${BASE_IMAGE_NAME}${NODE_MAJOR}"
         # Push the full versions for each image type.
@@ -37,3 +38,21 @@ deployment:
         # Tag them as the major version too, for each image type.
         echo "$IMAGES" | \
           xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "${IMAGE_NAME_MAJOR}-%"
+
+        # Push those major version tags.
+        echo "$IMAGES" | \
+          xargs -n1 -I% docker push "${IMAGE_NAME_VERSION}-%"
+
+        # If this is the default track, tag them with the bare tags.
+        if [ "$NODE_MAJOR" = "4" ]
+        then
+          echo "$IMAGES" | \
+            xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "%"
+
+          echo "$IMAGES" | \
+            xargs -n1 -I% docker push "%"
+
+          # Also tag base as 'latest'
+          docker tag "${DOCKER_HUB_REPO}:base" "${DOCKER_HUB_REPO}:latest"
+          docker push "${DOCKER_HUB_REPO}:latest"
+        fi
