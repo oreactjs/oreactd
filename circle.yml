@@ -27,7 +27,17 @@ deployment:
     commands:
       - docker images
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push "abernix/meteord:node-${NODE_VERSION}-base"
-      - docker push "abernix/meteord:node-${NODE_VERSION}-onbuild"
-      - docker push "abernix/meteord:node-${NODE_VERSION}-devbuild"
-      - docker push "abernix/meteord:node-${NODE_VERSION}-binbuild"
+      - |
+        set -x
+        IMAGES="base onbuild devbuild binbuild"
+        NODE_MAJOR="$(echo $NODE_VERSION | cut -d '.' -f1)"
+        BASE_IMAGE_NAME="abernix/meteord:node-"
+        IMAGE_NAME_VERSION="${BASE_IMAGE_NAME}${NODE_VERSION}"
+        IMAGE_NAME_MAJOR="${BASE_IMAGE_NAME}${NODE_MAJOR}"
+        # Push the full versions for each image type.
+        echo "$IMAGES" | \
+          xargs -n1 -I% docker push "${IMAGE_NAME_VERSION}-%"
+
+        # Tag them as the major version too, for each image type.
+        echo "$IMAGES" | \
+          xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "${IMAGE_NAME_MAJOR}-%"
