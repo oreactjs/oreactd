@@ -18,3 +18,11 @@ dependencies:
 test:
   override:
     - cd tests && bash run_tests.sh
+
+deployment:
+  docker:
+    branch: /^node-[0-9.]+$/
+    commands:
+      - test -f $CIRCLE_ARTIFACTS/images
+      - docker images
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
