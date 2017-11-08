@@ -28,7 +28,6 @@ deployment:
       - docker images
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - |
-        set -x
         IMAGES="
           base
           onbuild

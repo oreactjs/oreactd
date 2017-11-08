@@ -17,7 +17,7 @@ Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binb
 
 ### Node 4 (Meteor 1.4, 1.5)
 
-#### Node 4.8.4
+#### Node 4.8.6
 
 * `node-4-base`, `node-4.8.6-base`
 * `node-4-binbuild`, `node-4.8.6-binbuild`
