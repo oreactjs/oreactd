@@ -3,6 +3,8 @@ machine:
     version: 8.9.0
   services:
     - docker
+  environment:
+    NODE_VERSION: 4.8.6
 
 dependencies:
   pre:
@@ -25,3 +27,7 @@ deployment:
     commands:
       - docker images
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push "abernix/meteord:node-${NODE_VERSION}-base"
+      - docker push "abernix/meteord:node-${NODE_VERSION}-onbuild"
+      - docker push "abernix/meteord:node-${NODE_VERSION}-devbuild"
+      - docker push "abernix/meteord:node-${NODE_VERSION}-binbuild"
