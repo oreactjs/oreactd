@@ -19,17 +19,17 @@ Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binb
 
 #### Node 4.8.4
 
-* `node-4-base`, `node-4.8.4-base`
-* `node-4-binbuild`, `node-4.8.4-binbuild`
-* `node-4-onbuild`, `node-4.8.4-onbuild`
-* `node-4-devbuild`, `node-4.8.4-devbuild`
+* `node-4-base`, `node-4.8.6-base`
+* `node-4-binbuild`, `node-4.8.6-binbuild`
+* `node-4-onbuild`, `node-4.8.6-onbuild`
+* `node-4-devbuild`, `node-4.8.6-devbuild`
 
-#### Node 4.8.0
+#### Node 4.8.4
 
-* `node-4.8.0-base`
-* `node-4.8.0-binbuild`
-* `node-4.8.0-onbuild`
-* `node-4.8.0-devbuild`
+* `node-4.8.4-base`
+* `node-4.8.4-binbuild`
+* `node-4.8.4-onbuild`
+* `node-4.8.4-devbuild`
 
 ### Older Node versions
 
