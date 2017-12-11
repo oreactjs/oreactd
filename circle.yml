@@ -1,10 +1,10 @@
 machine:
   node:
-    version: 8.9.1
+    version: 8.9.3
   services:
     - docker
   environment:
-    NODE_VERSION: 8.9.1
+    NODE_VERSION: 8.9.3
 
 dependencies:
   pre:
