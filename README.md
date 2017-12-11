@@ -17,19 +17,12 @@ Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binb
 
 ### Node 4 (Meteor 1.4, 1.5)
 
-#### Node 4.8.6
+#### Node 4.8.7
 
-* `node-4-base`, `node-4.8.6-base`
-* `node-4-binbuild`, `node-4.8.6-binbuild`
-* `node-4-onbuild`, `node-4.8.6-onbuild`
-* `node-4-devbuild`, `node-4.8.6-devbuild`
-
-#### Node 4.8.4
-
-* `node-4.8.4-base`
-* `node-4.8.4-binbuild`
-* `node-4.8.4-onbuild`
-* `node-4.8.4-devbuild`
+* `node-4-base`, `node-4.8.7-base`
+* `node-4-binbuild`, `node-4.8.7-binbuild`
+* `node-4-onbuild`, `node-4.8.7-onbuild`
+* `node-4-devbuild`, `node-4.8.7-devbuild`
 
 ### Older Node versions
 
