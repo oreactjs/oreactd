@@ -19,3 +19,5 @@ bash ./test_meteor_app_with_devbuild.sh
 
 bash ./test_phantomjs.sh
 bash ./test_no_app.sh
+
+bash ./test_sigterm.sh

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e
 
 if [ -d /bundle ]; then
@@ -47,4 +49,4 @@ fi
 export PORT=${PORT:-80}
 
 echo "=> Starting meteor app on port:$PORT"
-node ${METEORD_NODE_OPTIONS} main.js
+exec node ${METEORD_NODE_OPTIONS} main.js

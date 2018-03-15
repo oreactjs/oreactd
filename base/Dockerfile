@@ -14,4 +14,5 @@ RUN bash $METEORD_DIR/lib/install_phantomjs.sh
 RUN bash $METEORD_DIR/lib/cleanup.sh
 
 EXPOSE 80
-ENTRYPOINT bash $METEORD_DIR/run_app.sh
+RUN chmod +x $METEORD_DIR/run_app.sh
+ENTRYPOINT exec $METEORD_DIR/run_app.sh
