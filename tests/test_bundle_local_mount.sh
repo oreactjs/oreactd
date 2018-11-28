@@ -12,7 +12,7 @@ function clean() {
 cd /tmp
 clean
 
-meteor create --release 1.7.0.2 localmount
+meteor create --release 1.8.1-beta.7 localmount
 cd localmount
 meteor build --architecture=os.linux.x86_64 ./
 pwd
