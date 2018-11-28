@@ -8,21 +8,12 @@ Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binb
 
 ### Node 8 (Meteor 1.6, 1.7+)
 
-#### Node 8.11.3
+#### Node 8.14.0
 
-* `node-8-base`, `node-8.11.3-base`
-* `node-8-binbuild`, `node-8.11.3-binbuild`
-* `node-8-onbuild`, `node-8.11.3-onbuild`
-* `node-8-devbuild`, `node-8.11.3-devbuild`
-
-### Node 4 (Meteor 1.4, 1.5)
-
-#### Node 4.8.7
-
-* `node-4-base`, `node-4.8.7-base`
-* `node-4-binbuild`, `node-4.8.7-binbuild`
-* `node-4-onbuild`, `node-4.8.7-onbuild`
-* `node-4-devbuild`, `node-4.8.7-devbuild`
+* `node-8-base`, `node-8.14.0-base`
+* `node-8-binbuild`, `node-8.14.0-binbuild`
+* `node-8-onbuild`, `node-8.14.0-onbuild`
+* `node-8-devbuild`, `node-8.14.0-devbuild`
 
 ### Older Node versions
 
@@ -47,7 +38,7 @@ There are two main ways you can use Docker with Meteor apps. They are:
 
 ### 1. Build a Docker image for your app
 
-With this method, your app will be converted into a Docker image. Then you can simply run that image.  
+With this method, your app will be converted into a Docker image. Then you can simply run that image.
 
 For that, you can use `abernix/meteord:onbuild` as your base image. Magically, that's only thing you have to do. Here's how to do it:
 
