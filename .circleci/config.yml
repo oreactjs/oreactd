@@ -1,0 +1,60 @@
+version: 2
+jobs:
+
+  build:
+    machine: true
+    environment:
+      NODE_VERSION: 8.12.0
+    steps:
+      - checkout
+      - run:
+          name: Install Meteor
+          command: curl https://install.meteor.com | sh
+      - run:
+          name: Build
+          command: cd tests && bash build_it.sh
+      - run:
+          name: Test
+          command: cd tests && bash run_tests.sh
+      - run:
+          name: Deploy
+          command: |
+            docker images
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            IMAGES="
+              base
+            "
+            NODE_MAJOR="$(echo $NODE_VERSION | cut -d '.' -f1)"
+            DOCKER_HUB_REPO="abernix/meteord"
+            BASE_IMAGE_NAME="${DOCKER_HUB_REPO}:node-"
+            IMAGE_NAME_VERSION="${BASE_IMAGE_NAME}${NODE_VERSION}"
+            IMAGE_NAME_MAJOR="${BASE_IMAGE_NAME}${NODE_MAJOR}"
+            # Push the full versions for each image type.
+            echo "$IMAGES" | xargs -n1 -I% docker push "${IMAGE_NAME_VERSION}-%"
+
+            # Tag them as the major version too, for each image type.
+            echo "$IMAGES" | xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "${IMAGE_NAME_MAJOR}-%"
+
+            # Push those major version tags.
+            echo "$IMAGES" | xargs -n1 -I% docker push "${IMAGE_NAME_MAJOR}-%"
+
+            # If this is the default track, tag them with the bare tags.
+            if [ "$NODE_MAJOR" = "4" ]
+            then
+              echo "$IMAGES" | xargs -n1 -I% docker tag "${IMAGE_NAME_VERSION}-%" "${DOCKER_HUB_REPO}:%"
+
+              echo "$IMAGES" | xargs -n1 -I% docker push "${DOCKER_HUB_REPO}:%"
+
+              # Also tag base as 'latest'
+              docker tag "${DOCKER_HUB_REPO}:base" "${DOCKER_HUB_REPO}:latest"
+              docker push "${DOCKER_HUB_REPO}:latest"
+            fi
+            
+workflows:
+  version: 2
+  builds:
+    jobs:
+      - build:
+          filters:
+            branches: 
+              only: /^node-[0-9.]+$/
