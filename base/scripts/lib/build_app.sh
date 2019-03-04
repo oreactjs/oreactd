@@ -16,6 +16,7 @@ meteor npm install --production
 echo "=> Executing Meteor Build..."
 export
 meteor build \
+  --server-only \
   --allow-superuser \
   --directory $BUNDLE_DIR \
   --server=http://localhost:3000
