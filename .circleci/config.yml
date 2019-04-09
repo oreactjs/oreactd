@@ -23,6 +23,9 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             IMAGES="
               base
+              onbuild
+              devbuild
+              binbuild
             "
             NODE_MAJOR="$(echo $NODE_VERSION | cut -d '.' -f1)"
             DOCKER_HUB_REPO="abernix/meteord"
