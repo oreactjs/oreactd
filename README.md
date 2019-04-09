@@ -6,14 +6,14 @@
 
 Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binbuild`, `-onbuild`) below.
 
-### Node 8 (Meteor 1.6, 1.7+)
+### Node 8 (Meteor 1.6, 1.7, 1.8+)
 
-#### Node 8.14.0
+#### Node 8.15.1
 
-* `node-8-base`, `node-8.14.0-base`
-* `node-8-binbuild`, `node-8.14.0-binbuild`
-* `node-8-onbuild`, `node-8.14.0-onbuild`
-* `node-8-devbuild`, `node-8.14.0-devbuild`
+* `node-8-base`, `node-8.15.1-base`
+* `node-8-binbuild`, `node-8.15.1-binbuild`
+* `node-8-onbuild`, `node-8.15.1-onbuild`
+* `node-8-devbuild`, `node-8.15.1-devbuild`
 
 ### Older Node versions
 
