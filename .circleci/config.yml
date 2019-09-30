@@ -4,7 +4,7 @@ jobs:
   build:
     machine: true
     environment:
-      NODE_VERSION: 8.15.1
+      NODE_VERSION: 12.10.0
     steps:
       - checkout
       - run:
@@ -52,12 +52,12 @@ jobs:
               docker tag "${DOCKER_HUB_REPO}:base" "${DOCKER_HUB_REPO}:latest"
               docker push "${DOCKER_HUB_REPO}:latest"
             fi
-            
+
 workflows:
   version: 2
   builds:
     jobs:
       - build:
           filters:
-            branches: 
+            branches:
               only: /^node-[0-9.]+$/
