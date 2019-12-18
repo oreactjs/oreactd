@@ -2,7 +2,7 @@
 set -e
 set -x
 
-export NODE_VERSION=${NODE_VERSION:-12.10.0}
+export NODE_VERSION=${NODE_VERSION:-12.14.0}
 
 bash ./build_it.sh
 
