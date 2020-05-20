@@ -2,6 +2,10 @@
 
 # MeteorD - Docker image for MUP
 
+## Build and Push
+* $ sudo docker build -t oreact/app:base .
+* $ sudo docker push oreact/app:base
+
 ## Supported tags
 
 Please see the explanation of the [tag variations](#tag-variations) (e.g. `-binbuild`, `-onbuild`) below.
