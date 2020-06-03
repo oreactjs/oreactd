@@ -1,5 +1,3 @@
-[![Circle CI](https://circleci.com/gh/abernix/oreactd/tree/master.svg?style=svg)](https://circleci.com/gh/abernix/oreactd/tree/master)
-
 # OreactD - Docker image for ORUP
 
 ## Build and Push
